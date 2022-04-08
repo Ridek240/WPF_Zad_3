@@ -1,0 +1,94 @@
+﻿<Window x:Class="WPF_Zad_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Zad_3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="4">
+            <Label FontWeight="Bold">Podsumowanie Zamówienia </Label>
+        </Grid>
+        <Grid Grid.Row="5">
+            <TextBox Margin="3" IsReadOnly="True" Name="Exitbox"/>
+        </Grid>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+             <ColumnDefinition Width="auto"/>
+             <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Margin="3">Nakład</Label>
+            <TextBox Grid.Column="1" Margin="3" TextChanged="Check_correct_value" Name="Cost"></TextBox>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width= "auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Grid.Column="1" Margin="3" Name="Colors" IsEnabled="False" SelectionChanged="ColorChosen" SelectedValuePath="Content">
+                <ComboBoxItem IsSelected="True">Żółty</ComboBoxItem>
+                <ComboBoxItem>Zielony</ComboBoxItem>
+                <ComboBoxItem>Niebieski</ComboBoxItem>
+                <ComboBoxItem>Czerwony</ComboBoxItem>
+            </ComboBox>
+            <CheckBox Grid.Column="0" Margin="3" Unchecked="Is_color" Checked="Is_color"  Name="ColorCb">Kolorowy Papier - cena +50%</CheckBox>
+        </Grid>
+        <Grid Grid.Row="3">
+              <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="auto"/>
+               <ColumnDefinition Width="auto"/>
+               <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Gramatura" Grid.Column="0" >
+                <StackPanel Margin="3" >
+                    <RadioButton Name="Grad1" Checked="PointersChanger">80 g/m^2</RadioButton>
+                    <RadioButton Name="Grad2" Checked="PointersChanger" IsChecked="True">120 g/m^2 - cena x2</RadioButton>
+                    <RadioButton Name="Grad3" Checked="PointersChanger" >200 g/m^2 - cena x2.5</RadioButton>
+                    <RadioButton Name="Grad4" Checked="PointersChanger">240 g/m^2 - cena x3</RadioButton>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Opcje Wydruku" Grid.Column="1">
+                <StackPanel Margin="3">
+                    <CheckBox Name="Opt1" Checked="PointersChanger" Unchecked="PointersChanger">druk w kolorze - cena +30%</CheckBox>
+                    <CheckBox Name="Opt2" Checked="PointersChanger" Unchecked="PointersChanger">druk dwustronny - cena +50%</CheckBox>
+                    <CheckBox Name="Opt3" Checked="PointersChanger" Unchecked="PointersChanger">lakier UV - cena +20%</CheckBox>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Termin realizacji" Grid.Column="2">
+                <StackPanel Margin="3">
+                    <RadioButton IsChecked="True" Checked="PointersChanger" Name="real1">Standard</RadioButton>
+                    <RadioButton Checked="PointersChanger" Name="Real">Ekspres - cena +15zł </RadioButton>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button IsDefault="True" Grid.Column="1" Margin="3" Click="Ok_Button">OK</Button>
+            <Button IsCancel="True" Grid.Column="2" Margin="3" Click="Cancel_button">Anuluj</Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Margin="3">Format</Label>
+            <Label Grid.Column="2" Margin="3" Name="Formatout" Content="A4 - cena 50gr/szt."></Label>
+            <Slider Grid.Column="1" Name="Format_in" Margin="3" Value="4" Minimum="0"  Maximum="5" IsSnapToTickEnabled="true" TickPlacement="BottomRight" ValueChanged="Format_Changed"></Slider>
+        </Grid>
+    </Grid>
+</Window>
